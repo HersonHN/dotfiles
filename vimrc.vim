@@ -1,103 +1,30 @@
-" Vim. Live it.
-" noremap  <up> <nop>
-" inoremap <up> <nop>
-" noremap  <down> <nop>
-" inoremap <down> <nop>
-" noremap  <left> <nop>
-" noremap  <right> <nop>
-" inoremap <left> <nop>
-" inoremap <right> <nop>
-"      B-A <start>
-
 
 " === General Config ===
 
-set number                      "Line numbers are good
-set backspace=indent,eol,start  "Allow backspace in insert mode
-set history=1000                "Store lots of :cmdline history
-set showcmd                     "Show incomplete cmds down the bottom
-set showmode                    "Show current mode down the bottom
-set visualbell                  "No sounds
-set autoread                    "Reload files changed outside vim
-set laststatus=2
-set nocompatible
+set autoread
+set backspace=indent,eol,start
 set encoding=utf-8
-set t_Co=256
-autocmd BufEnter * silent! lcd %:p:h
-
-" turn on syntax highlighting
-syntax on
-
-
-
-
-" === Search Settings  ===
-
-set incsearch
-set ignorecase
-set smartcase
+set history=1000
 set hlsearch
-
-
-
-" === Turn Off Swap Files ===
-
-set noswapfile
+set ignorecase
+set incsearch
+set laststatus=2
 set nobackup
+set nocompatible
+set noswapfile
 set nowb
+set number
+set showcmd
+set showmode
+set smartcase
+set t_Co=256
+set visualbell
+set nohidden
 
 
-
-" === Persistent Undo ===
-" Keep undo history across sessions, by storing in file.
-" Only works all the time.
-
-silent !mkdir ~/.vim-backups > /dev/null 2>&1
-set undodir=~/.vim-backups
-set undofile
-
-
-
-" === Indentation ===
-
-set autoindent
-set smartindent
-set smarttab
-" 4 spaces by default
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
-set expandtab
-
-filetype plugin on
 filetype indent on
-
-
-
-" === Folds ===
-
-set foldmethod=indent
-set nofoldenable
-
-
-
-" === Completion ===
-
-set wildmode=list:longest
-set wildmenu
-set wildignore=*.o,*.obj,*~
-set wildignore+=*vim-backups*
-set wildignore+=*sass-cache*
-set wildignore+=*DS_Store*
-set wildignore+=*.png,*.jpg,*.gif
-
-
-
-" === Scrolling ===
-
-set scrolloff=3
-set sidescrolloff=15
-set sidescroll=1
+filetype plugin on
+syntax on
 
 
 
@@ -113,6 +40,41 @@ set nowrap
 
 
 
+" === Folds ===
+
+set foldmethod=indent
+set nofoldenable
+
+
+
+" === Indentation ===
+
+set autoindent
+set smartindent
+set smarttab
+set shiftwidth=4    "4 spaces by default
+set softtabstop=4
+set tabstop=4
+set expandtab
+nohlsearch
+
+
+" === Scrolling ===
+
+set scrolloff=3
+set sidescroll=1
+set sidescrolloff=15
+
+
+
+" === Undo Files ===
+
+silent !mkdir ~/.vim-backups > /dev/null 2>&1
+set undodir=~/.vim-backups
+set undofile
+
+
+
 " === GUI ===
 
 set mouse=a
@@ -121,45 +83,29 @@ if has("gui_macvim")
     set guifont=Menlo:h14
     set linespace=3
     colorscheme Solarized
-    call Solarizame()
-endif
 
-function! Solarizame()
-    " I don't like to much yellow :(
-    hi Normal guibg=#ffffff
-    hi SpecialKey guibg=#eeeeee
-    hi LineNr guibg=#eeeeee
-    hi Folded guibg=#eeeeee
-    hi FoldColumn guibg=#eeeeee
-    hi DiffAdd guibg=#eeeeee
-    hi DiffChange guibg=#eeeeee
-    hi DiffDelete guibg=#eeeeee
-    hi DiffText guibg=#eeeeee
-    
-    hi TabLine guibg=#eeeeee
-    hi TabLineFill guibg=#eeeeee
-    hi CursorColumn guibg=#eeeeee
-    hi CursorLine guibg=#eeeeee
-    hi ColorColumn guibg=#eeeeee
-    hi Visual guibg=#000000
-
-    hi htmlTag guifg=#268bd2 gui=bold
+    " Fixing the html tag color
     hi htmlEndTag guifg=#268bd2  gui=bold
-    hi htmlTagN guifg=#268bd2 gui=bold
     hi htmlScriptTag guifg=#268bd2 gui=bold
-endfunction
-
-
-
-" ALLWAYS open buffers in tabs
-au BufAdd,BufNewFile,BufRead * nested tab sball
-se switchbuf=usetab,newtab
+    hi htmlTag guifg=#268bd2 gui=bold
+    hi htmlTagN guifg=#268bd2 gui=bold
+endif
 
 
 
 " === Keys ===
+
 let mapleader=","
 set timeoutlen=1000
+
+function! CloseBufferOrVim()
+    if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
+        :q
+    else
+        :bd
+    endif
+endfunction
+
 
 " <leader>s and <Command-S> to save
 noremap <leader>s :w <CR>
@@ -169,11 +115,11 @@ noremap <C-S> :w <CR>
 noremap <leader>m :tabp <CR>
 noremap <leader>. :tabn <CR>
 
-" exit with command/contro Q
-noremap <leader>q :q <CR>
+" close buffer with <leader> Q
+noremap <leader>q :call CloseBufferOrVim() <CR>
 
 " <leader><space> to clean search selection
-noremap <leader><space> :nohlsearch<CR>
+noremap <leader><space> :nohlsearch <CR>
 
 " Reaload Vim
 noremap <leader><F5> :source $MYVIMRC <CR>
@@ -210,7 +156,6 @@ inoremap <s-tab> <c-n>
 
 
 
-
 " === Plugins ===
 
 " Pathogen
@@ -220,17 +165,13 @@ execute pathogen#infect()
 let g:ctrlp_map = '<leader>p'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git|.class'
 
 " CSS-Colors
 au! FileType scss syntax cluster sassCssAttributes add=@cssColors
 
 " vim-powerline
 " let g:Powerline_colorscheme="solarized"
-
-
-
-
-
 
 
 

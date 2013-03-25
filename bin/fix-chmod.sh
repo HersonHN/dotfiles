@@ -1,26 +1,36 @@
 #!/usr/bin/env bash
 
-chdirs() {
-    for X in $( ls -p | grep / )
+
+main() {
+    basedir="$(pwd)"
+    echo $basedir
+
+    ls -R | grep ":$" | while read dir
     do
-        echo "chmod -R 755 $X" | sh
+        dir="${dir:2:${#dir} - 3}"
+        dir="$basedir/$dir/"
+
+        if [ -d "$dir" ] && [ ! -L "$dir" ] 
+        then
+            echo $dir
+            echo "chmod -R 755 \"$dir\"" | sh
+            chfiles "$dir"
+        fi
     done
 }
+
+
 
 chfiles() {
-    for X in $( ls -p | grep -v / )
+    ls -p "$1" | grep -v "/" | while read filename
     do
-        echo "chmod -R 644 $X" | sh
+        filename="$1$filename"
+        if [ -f "$filename"  ] && [ ! -L "$filename" ] 
+        then
+            echo $filename
+            echo "chmod -R 644 \"$filename\"" | sh
+        fi
     done
 }
 
-BAR="$(pwd)"
-echo $BAR
-
-for FOO in $( ls -R | grep ":$" | sed -e 's/:$//' )
-do
-    BAZ="$BAR/$FOO"
-    echo "Accesing: $BAZ"
-    chfiles
-    chdirs
-done
+main

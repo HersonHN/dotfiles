@@ -14,7 +14,9 @@ then
 fi
 
 # Making backups
-mv ~/.vim ~/.vim-backup
+if [ -d ~/.vim ]
+    mv ~/.vim ~/.vim-backup
+fi
 
 # link the .vim folder
 ln -s ~/dotfiles/VIM ~/.vim
