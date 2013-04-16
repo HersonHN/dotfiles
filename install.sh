@@ -15,6 +15,8 @@ fi
 
 # Making backups
 if [ -d ~/.vim ]
+then
+    echo "Backup of .vim directory created at .vim-backup"
     mv ~/.vim ~/.vim-backup
 fi
 
@@ -24,3 +26,5 @@ ln -s ~/dotfiles/VIM ~/.vim
 # adding the source to the .vimrc and the .bashrc
 echo "source ~/dotfiles/vimrc.vim" >> ~/.vimrc
 echo "source ~/dotfiles/bashrc.sh" >> ~/.bashrc
+
+echo "dotfiles installed"
