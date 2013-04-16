@@ -69,6 +69,7 @@ md () {
 }
 
 # Extract tar, zip, etc in with a single command
+# Found here: <http://alias.sh/extract-most-know-archives-one-command>
 extract () {
   if [ -f $1 ] ; then
     case $1 in
@@ -126,8 +127,6 @@ color_blue=\\[\\e[34m\\]
 color_magenta=\\[\\e[35m\\]
 color_cyan=\\[\\e[36m\\]
 color_white=\\[\\e[37m\\]
-
-
 
 
 
