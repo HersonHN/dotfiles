@@ -27,4 +27,7 @@ ln -s ~/dotfiles/VIM ~/.vim
 echo "source ~/dotfiles/vimrc.vim" >> ~/.vimrc
 echo "source ~/dotfiles/bashrc.sh" >> ~/.bashrc
 
+# giving the rights to the custom scripts
+chmod 744 ~/dotfiles/bin/*
+
 echo "dotfiles installed"

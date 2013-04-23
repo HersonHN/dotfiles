@@ -27,9 +27,7 @@ alias rb="ruby"
 
 ### aliases to external files ###
 
-alias tree="sh ~/dotfiles/bin/lstree.sh"
-alias fixchmod="sh ~/dotfiles/bin/fix-chmod.sh"
-
+export PATH="$PATH:~/dotfiles/bin/"
 
 
 ### common misstypings ###

@@ -27,7 +27,6 @@ filetype plugin on
 syntax on
 
 
-
 " === Endline movement ===
 
 set linebreak
@@ -80,15 +79,25 @@ set undofile
 set mouse=a
 
 if has("gui_macvim")
-    set guifont=Menlo:h14
+    set guifont=Menlo:h15
     set linespace=3
-    colorscheme Solarized
 
+    colorscheme Tomorrow
+    
     " Fixing the html tag color
-    hi htmlEndTag guifg=#268bd2  gui=bold
-    hi htmlScriptTag guifg=#268bd2 gui=bold
-    hi htmlTag guifg=#268bd2 gui=bold
-    hi htmlTagN guifg=#268bd2 gui=bold
+    hi htmlEndTag guifg=#4472b5 
+    hi htmlScriptTag guifg=#4472b5
+    hi htmlTag guifg=#4472b5
+    hi htmlTagN guifg=#4472b5
+    hi htmlTagName guifg=#4472b5
+
+    """ colorscheme Solarized
+
+    """ " Fixing the html tag color
+    """ hi htmlEndTag guifg=#268bd2 gui=bold
+    """ hi htmlScriptTag guifg=#268bd2 gui=bold
+    """ hi htmlTag guifg=#268bd2 gui=bold
+    """ hi htmlTagN guifg=#268bd2 gui=bold
 endif
 
 
@@ -126,6 +135,31 @@ noremap <leader><F5> :source $MYVIMRC <CR>
 
 " Simple Search
 noremap <leader>f :execute '/\V' . escape(input('/'), '\\/')<CR>
+
+
+
+function! GlobalSeach()
+    let text = escape(input("what do you want to seach?: "),  '\\/')
+    if text == ""
+        echo "" | return
+    endif
+    let extension = escape(input("Wich extension? (* for all): "), '\\/')
+    if extension == ""
+        echo "" | return
+    endif
+    
+    let search_command = ':lvim /\V' . text . '/gj ./**/*.' . extension
+    try
+        execute search_command 
+    catch
+        echo "Nothing found"
+        return
+    endtry
+    
+    lwindow
+endfunction
+
+noremap <leader>F :call GlobalSeach() <CR>
 
 " Buffers to tabs
 noremap <leader>t :tab sball <CR>
