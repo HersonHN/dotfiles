@@ -98,8 +98,8 @@ function! ColorsSolarized()
 endfunction
 
 if has("gui_macvim")
-    set guifont=Menlo:h15
-    set linespace=3
+    set guifont=Monaco:h15
+    set linespace=4
     colorscheme grb256
 endif
 
