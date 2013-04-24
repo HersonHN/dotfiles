@@ -78,26 +78,29 @@ set undofile
 
 set mouse=a
 
-if has("gui_macvim")
-    set guifont=Menlo:h15
-    set linespace=3
-
+function! ColorsTomorrow()
     colorscheme Tomorrow
-    
     " Fixing the html tag color
     hi htmlEndTag guifg=#4472b5 
     hi htmlScriptTag guifg=#4472b5
     hi htmlTag guifg=#4472b5
     hi htmlTagN guifg=#4472b5
     hi htmlTagName guifg=#4472b5
+endfunction
 
-    """ colorscheme Solarized
+function! ColorsSolarized()
+    colorscheme Solarized
+    " Fixing the html tag color
+    hi htmlEndTag guifg=#268bd2 gui=bold
+    hi htmlScriptTag guifg=#268bd2 gui=bold
+    hi htmlTag guifg=#268bd2 gui=bold
+    hi htmlTagN guifg=#268bd2 gui=bold
+endfunction
 
-    """ " Fixing the html tag color
-    """ hi htmlEndTag guifg=#268bd2 gui=bold
-    """ hi htmlScriptTag guifg=#268bd2 gui=bold
-    """ hi htmlTag guifg=#268bd2 gui=bold
-    """ hi htmlTagN guifg=#268bd2 gui=bold
+if has("gui_macvim")
+    set guifont=Menlo:h15
+    set linespace=3
+    colorscheme grb256
 endif
 
 
