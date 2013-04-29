@@ -100,6 +100,8 @@ endfunction
 if has("gui_macvim")
     set guifont=Monaco:h15
     set linespace=4
+
+    colorscheme TronLegacy
 endif
 
 
