@@ -23,6 +23,10 @@ alias rr="rm -rf"
 alias gitl="git log --pretty=oneline --abbrev-commit"
 alias rb="ruby"
 
+# OSX aliases
+if [[ `uname` == 'Darwin' ]]; then
+    alias subl="/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl"
+fi
 
 
 ### aliases to external files ###
