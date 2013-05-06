@@ -41,6 +41,8 @@ set nowrap
 
 " === Folds ===
 
+syn match MyEmptyLines "\(^\s*\n\)\+" fold
+syn sync fromstart
 set foldmethod=indent
 set nofoldenable
 
