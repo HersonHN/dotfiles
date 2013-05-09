@@ -122,12 +122,15 @@ function! CloseBufferOrVim()
 endfunction
 
 
+" slipt line
+nnoremap K i<CR><Esc>
+
 " <leader>s and <Command-S> to save
 noremap <leader>s :w <CR>
 noremap <C-S> :w <CR>
 
 " navigation throughout tabs
-noremap <leader>m :tabp <CR>
+noremap <leader>, :tabp <CR>
 noremap <leader>. :tabn <CR>
 
 " close buffer with <leader> Q
@@ -143,7 +146,7 @@ noremap <leader><F5> :source $MYVIMRC <CR>
 noremap <leader>f :execute '/\V' . escape(input('/'), '\\/')<CR>
 
 
-
+" Global Search
 function! GlobalSeach()
     let text = escape(input("what do you want to seach?: "),  '\\/')
     if text == ""
@@ -178,6 +181,11 @@ noremap k gk
 noremap <leader>4 :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
 noremap <leader>2 :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
 
+" Copy Text to clipboard
+vmap <C-c> "+y
+
+" Cut text to clipboard
+vmap <C-x> "+d
 
 
 " === Autocompletion ===
