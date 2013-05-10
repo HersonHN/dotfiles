@@ -13,15 +13,23 @@ export LSCOLORS=Gxfxcxdxbxegedabagacad
 
 
 
+### Lazy's man shortcuts
+
+alias v="vim"
+alias g="git"
+alias r="rails"
+alias rb="ruby"
+alias m="maven"
+
+
+
 ### customs ###
 
 alias cls="clear"
 alias sasw="sass --watch ."
 alias sassw="sasw"
-alias v="vim"
 alias rr="rm -rf"
 alias gitl="git log --pretty=oneline --abbrev-commit"
-alias rb="ruby"
 
 # OSX aliases
 if [[ `uname` == 'Darwin' ]]; then
