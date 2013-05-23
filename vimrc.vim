@@ -79,7 +79,12 @@ if has("undofile")
 endif
 
 
+" === Please ignore this files ==
+set wildignore=.git,.hg,.svn,node_modules,*.exe,*.so,*.dll,*.jpg,*.jpeg,*.png,*.gif,*.woof,*.swf,*.mp3,*.mp4,*.vid,*.tiff,*.pdf
 
+
+" === Trailing characters ===
+set list lcs=tab:·⁖,trail:¶
 
 " === GUI ===
 
@@ -88,7 +93,7 @@ set mouse=a
 function! ColorsTomorrow()
     colorscheme Tomorrow
     " Fixing the html tag color
-    hi htmlEndTag guifg=#4472b5 
+    hi htmlEndTag guifg=#4472b5
     hi htmlScriptTag guifg=#4472b5
     hi htmlTag guifg=#4472b5
     hi htmlTagN guifg=#4472b5
@@ -149,7 +154,6 @@ noremap <leader><F5> :source $MYVIMRC <CR>
 
 " Simple Search
 noremap <leader>f :execute '/\V' . escape(input('/'), '\\/')<CR>
-
 
 " Global Search
 function! GlobalSeach()
@@ -218,7 +222,7 @@ execute pathogen#infect()
 let g:ctrlp_map = '<leader>p'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git|.class'
+ 
 
 " CSS-Colors
 au! FileType scss syntax cluster sassCssAttributes add=@cssColors
