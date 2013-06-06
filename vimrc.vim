@@ -101,7 +101,13 @@ function! ColorsTomorrow()
 endfunction
 
 function! ColorsSolarized()
+    let g:solarized_contrast = "high"
+    let g:solarized_visibility = "normal"
+    let g:solarized_italic = 1
+    let g:solarized_termcolors = "256"
+    set background=dark
     colorscheme Solarized
+
     " Fixing the html tag color
     hi htmlEndTag guifg=#268bd2 gui=bold
     hi htmlScriptTag guifg=#268bd2 gui=bold
@@ -113,7 +119,7 @@ if has("gui_macvim")
     set guifont=Monaco:h15
     set linespace=4
 
-    colorscheme Tomorrow-Night-Bright
+    colorscheme codeschool
 endif
 
 
@@ -140,8 +146,10 @@ noremap <leader>s :w <CR>
 noremap <C-S> :w <CR>
 
 " navigation throughout tabs
-noremap <leader>. :tabp <CR>
-noremap <leader>, :tabn <CR>
+noremap 1 :tabp <CR>
+noremap 2 :tabn <CR>
+noremap 8 :tabp \| :go 1 <CR>
+noremap 9 :tabn \| :go 1 <CR>
 
 " close buffer with <leader> Q
 noremap <leader>q :call CloseBufferOrVim() <CR>
