@@ -146,10 +146,10 @@ noremap <leader>s :w <CR>
 noremap <C-S> :w <CR>
 
 " navigation throughout tabs
-noremap 1 :tabp <CR>
-noremap 2 :tabn <CR>
-noremap 8 :tabp \| :go 1 <CR>
-noremap 9 :tabn \| :go 1 <CR>
+noremap <C-1> :tabp <CR>
+noremap <C-2> :tabn <CR>
+noremap <C-8> :tabp \| :go 1 <CR>
+noremap <C-9> :tabn \| :go 1 <CR>
 
 " close buffer with <leader> Q
 noremap <leader>q :call CloseBufferOrVim() <CR>

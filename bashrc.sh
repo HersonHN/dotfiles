@@ -116,11 +116,6 @@ apacherestart () {
   sudo /usr/sbin/apachectl restart
 }
 
-# Simple server
-server () {
-  python -m SimpleHTTPServer $1 &
-}
-
 
 
 ### Prompt ###
@@ -153,7 +148,7 @@ checkGitForPrompt() {
   fi
   
   # Set the prompt
-  PS1="ツ $color_bold$color_red\u$git_branch: \w > $color_clear"
+  PS1=" $color_bold$color_red\u$git_branch: \w > $color_clear"
 }
 
 export PROMPT_COMMAND=checkGitForPrompt
