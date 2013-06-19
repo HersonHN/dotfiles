@@ -30,7 +30,6 @@ syntax on
 " === Endline movement ===
 
 set linebreak
-set nolist
 set textwidth=0
 set wrapmargin=0
 set formatoptions+=l
@@ -83,8 +82,9 @@ endif
 set wildignore=.git,.hg,.svn,node_modules,*.exe,*.so,*.dll,*.jpg,*.jpeg,*.png,*.gif,*.woof,*.swf,*.mp3,*.mp4,*.vid,*.tiff,*.pdf
 
 
-" === Trailing characters ===
-set list lcs=tab:·⁖,trail:¶
+" === Trailing characters (off by default) ===
+set nolist listchars=trail:·,tab:➟\ 
+
 
 " === GUI ===
 
@@ -159,6 +159,9 @@ noremap <leader><space> :nohlsearch <CR>
 
 " Reaload Vim
 noremap <leader><F5> :source $MYVIMRC <CR>
+
+" Hilight tabs and trailing spaces
+noremap <leader>l :set list! <CR>
 
 " Simple Search
 noremap <leader>f :execute '/\V' . escape(input('/'), '\\/')<CR>
