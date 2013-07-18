@@ -38,13 +38,20 @@ set nowrap
 
 
 
+" === Word Separators ===
+
+set iskeyword+=$
+set iskeyword+=-
+set iskeyword+=@
+
+
+
 " === Folds ===
 
 syn match MyEmptyLines "\(^\s*\n\)\+" fold
 syn sync fromstart
 set foldmethod=indent
-set nofoldenable
-
+set foldlevel=20
 
 
 " === Indentation ===
@@ -63,8 +70,7 @@ nohlsearch
 
 set scrolloff=3
 set sidescroll=1
-set sidescrolloff=15
-
+set sidescrolloff=1
 
 
 " === Undo Files ===
@@ -108,18 +114,23 @@ function! ColorsSolarized()
     set background=dark
     colorscheme Solarized
 
-    " Fixing the html tag color
-    hi htmlEndTag guifg=#268bd2 gui=bold
-    hi htmlScriptTag guifg=#268bd2 gui=bold
-    hi htmlTag guifg=#268bd2 gui=bold
-    hi htmlTagN guifg=#268bd2 gui=bold
+    if has("gui_macvim")
+        " Fixing the html tag color
+        hi Normal guibg=#000000
+        hi htmlEndTag guifg=#268bd2 gui=bold
+        hi htmlScriptTag guifg=#268bd2 gui=bold
+        hi htmlTag guifg=#268bd2 gui=bold
+        hi htmlTagN guifg=#268bd2 gui=bold
+    endif
 endfunction
 
 if has("gui_macvim")
     set guifont=Monaco:h15
     set linespace=4
 
-    colorscheme codeschool
+    call ColorsSolarized()
+else
+    colorscheme Tomorrow-Night-Bright
 endif
 
 
@@ -143,13 +154,12 @@ nnoremap K i<CR><Esc>
 
 " <leader>s and <Command-S> to save
 noremap <leader>s :w <CR>
+noremap <leader>S :w <CR>
 noremap <C-S> :w <CR>
 
 " navigation throughout tabs
-noremap <C-1> :tabp <CR>
-noremap <C-2> :tabn <CR>
-noremap <C-8> :tabp \| :go 1 <CR>
-noremap <C-9> :tabn \| :go 1 <CR>
+noremap <leader><left> :tabp <CR>
+noremap <leader><right> :tabn <CR>
 
 " close buffer with <leader> Q
 noremap <leader>q :call CloseBufferOrVim() <CR>
