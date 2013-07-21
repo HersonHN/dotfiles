@@ -129,8 +129,6 @@ if has("gui_macvim")
     set linespace=4
 
     call ColorsSolarized()
-else
-    colorscheme Tomorrow-Night-Bright
 endif
 
 

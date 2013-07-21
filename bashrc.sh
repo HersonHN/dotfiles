@@ -116,6 +116,18 @@ apacherestart () {
   sudo /usr/sbin/apachectl restart
 }
 
+# compile cpp stuff
+c () {
+    if [[ "$1" =~ "." ]]
+    then
+        echo "Wrong filename"
+        return;
+    fi
+
+    make $1
+    ./$1
+    rm $1
+}
 
 
 ### Prompt ###
