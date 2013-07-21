@@ -76,12 +76,9 @@ set sidescrolloff=1
 " === Undo Files ===
 
 silent !mkdir ~/.vim-backups > /dev/null 2>&1
-if has("undodir")
-    set undodir=~/.vim-backups
-endif
-if has("undofile")
-    set undofile
-endif
+set undofile
+set undodir=~/.vim-backups
+set undolevels=1000
 
 
 " === Please ignore this files ==
