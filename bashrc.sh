@@ -108,6 +108,12 @@ gitp () {
   git add -A && git commit -m "$1" && git push origin master
 }
 
+# Git branch
+gitb () {
+  git_branch=$(git branch | grep '*' | tr '* ' '\0')
+  echo $git_branch
+}
+
 # This is like ls -al, but with the octal description of the file's permission
 la () {
   ls -la "$@" | awk '{k=0;for(i=0;i<=8;i++)k+=((substr($1,i+2,1)~/[rwx]/)*2^(8-i));printf("%0o ",k);print}'
@@ -133,7 +139,6 @@ c () {
 
 
 ### Prompt ###
-
 color_clear=\\[\\e[0m\\]
 color_bold=\\[\\e[1m\\]
 
@@ -152,17 +157,19 @@ color_white=\\[\\e[37m\\]
 ### Check if current dir is a valid Git repo ###
 
 checkGitForPrompt() {
-  if [ -d .git ] || git rev-parse --git-dir > /dev/null 2>&1;
-  then
-    git_branch="$(git branch)"
-    git_branch=${git_branch/\* /}
-    git_branch="$color_green($git_branch)$color_red"
-  else
-    git_branch=""
+  local BRANCH="";
+
+  if [ -d .git ]; then
+    gitb &> /dev/null
+    BRANCH="$git_branch"
+  fi
+
+  if [ "$BRANCH" ]; then
+    BRANCH="$color_green""(""$git_branch"")""$color_red"
   fi
   
   # Set the prompt
-  PS1=" $color_bold$color_red\u$git_branch: \w > $color_clear"
+  PS1="$color_bold""$color_red""\u""$BRANCH: ""\w"" > ""$color_clear"
 }
 
 export PROMPT_COMMAND=checkGitForPrompt
