@@ -17,17 +17,19 @@ export LSCOLORS=Gxfxcxdxbxegedabagacad
 
 alias v="vim"
 alias g="git"
-alias r="rails"
-alias rb="ruby"
-alias m="maven"
 
+# laziness level 2
+alias .="open ."
+alias ,="cd -" # I can't use `-` :(
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
 
 
 ### customs ###
 
 alias cls="clear"
-alias sasw="sass --watch ."
-alias sassw="sasw"
 alias rr="rm -rf"
 alias gitl="git log --pretty=oneline --abbrev-commit"
 
