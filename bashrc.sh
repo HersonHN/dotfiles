@@ -156,7 +156,7 @@ color_white=\\[\\e[37m\\]
 
 ### Check if current dir is a valid Git repo ###
 
-checkGitForPrompt() {
+check_git_branch_for_prompt() {
   local BRANCH="";
 
   if [ -d .git ]; then
@@ -172,9 +172,7 @@ checkGitForPrompt() {
   PS1="$color_bold""$color_red""\u""$BRANCH: ""\w"" > ""$color_clear"
 }
 
-export PROMPT_COMMAND=checkGitForPrompt
-
-
+export PROMPT_COMMAND=check_git_branch_for_prompt
 
 
 
