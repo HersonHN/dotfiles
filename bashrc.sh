@@ -76,8 +76,8 @@ alias ZZ="exit"
 
 # Make a new directory and open it
 md () {
-    mkdir $1
-    cd $1
+    mkdir "$1"
+    cd "$1"
 }
 
 # Extract tar, zip, etc in with a single command
