@@ -26,6 +26,7 @@ ln -s ~/dotfiles/VIM ~/.vim
 # adding the source to the .vimrc and the .bashrc
 echo "source ~/dotfiles/vimrc.vim" >> ~/.vimrc
 echo "source ~/dotfiles/bashrc.sh" >> ~/.bashrc
+echo "source ~/dotfiles/bashrc.sh" >> ~/.bash_profile
 
 # giving the rights to the custom scripts
 chmod 744 ~/dotfiles/bin/*
