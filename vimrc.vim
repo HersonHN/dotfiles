@@ -94,7 +94,7 @@ set nolist listchars=trail:·,tab:➟\
 set mouse=a
 
 function! ColorsTomorrow()
-    colorscheme Tomorrow
+    colorscheme "Tomorrow-Night-Bright"
     " Fixing the html tag color
     hi htmlEndTag guifg=#4472b5
     hi htmlScriptTag guifg=#4472b5
@@ -124,9 +124,8 @@ endfunction
 if has("gui_macvim")
     set guifont=Monaco:h15
     set linespace=4
+    call ColorsTomorrow()
 endif
-
-colorscheme Tomorrow-Night-Bright
 
 
 " === Keys ===
