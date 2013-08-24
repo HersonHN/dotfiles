@@ -94,7 +94,7 @@ set nolist listchars=trail:·,tab:➟\
 set mouse=a
 
 function! ColorsTomorrow()
-    colorscheme "Tomorrow-Night-Bright"
+    colorscheme TomorrowNightBright
     " Fixing the html tag color
     hi htmlEndTag guifg=#4472b5
     hi htmlScriptTag guifg=#4472b5
