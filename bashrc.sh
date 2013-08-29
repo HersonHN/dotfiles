@@ -31,6 +31,9 @@ alias .....="cd ../../../.."
 
 alias cls="clear"
 alias rr="rm -rf"
+alias rb="ruby"
+alias py="python"
+alias js="node"
 alias gitl="git log --pretty=oneline --abbrev-commit"
 
 # OSX aliases
