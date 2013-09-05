@@ -1,0 +1,52 @@
+#!/usr/bin/env ruby
+require 'optparse'
+
+# text procesing with ruby, line by line
+
+sciptname = "goku"
+options = { :delimiter => "\n" }
+
+OptionParser.new do |opts|
+    opts.banner = <<-END.gsub(/^[ |\t]+/, '')
+
+        Usage: #{sciptname} command_for_each_line file
+
+        Example: > find . -name *.jpg | #{sciptname} 'mv "\#{line}" "\#{line.gsub(".jpg", ".jpeg")}"'
+        
+        Example: > #{sciptname} 'cat "\#{line}"' < files-to-cat.txt
+
+    END
+
+    opts.on("-d", "--delimiter [DELIMITER]", 'Set the delimiter ( default: "\n" )') do |delimiter|
+        options[:delimiter] = delimiter
+    end
+end.parse!
+
+# Using a heredoc becouse parse quotes it's harder
+command = ARGV[0]
+command = "<<-HEREDOC\n" + command + "\nHEREDOC"
+
+# Second parameter is the filename
+filename = ARGV[1]
+is_piped = !$stdin.tty?
+number = 0
+
+# Just use the line text and number in the eval
+def binds line, number
+    return binding
+end
+
+action_loop = Proc.new do |line|
+    number += 1
+    action = eval(command, binds(line, number)).gsub "\n", ""
+    puts action
+end
+
+if is_piped
+    $stdin.each_line options[:delimiter] { |line| action_loop.call(line) }
+elsif filename
+    content = File.read(filename).to_s
+    content.split(options[:delimiter]).each { |line| action_loop.call(line) }
+end
+
+
