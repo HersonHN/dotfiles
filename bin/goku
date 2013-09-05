@@ -11,9 +11,9 @@ OptionParser.new do |opts|
 
         Usage: #{sciptname} command_for_each_line file
 
-        Example: > find . -name *.jpg | #{sciptname} 'mv "\#{line}" "\#{line.gsub(".jpg", ".jpeg")}"'
+        Example: > find . -name "*.jpg" | #{sciptname} 'mv "\#{line}" "\#{line.gsub(".jpg", ".jpeg")}"'
         
-        Example: > #{sciptname} 'cat "\#{line}"' < files-to-cat.txt
+        Example: > find . -name "*.js" | #{sciptname} "\#{number}) \#{line}"
 
     END
 
