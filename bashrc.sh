@@ -157,6 +157,10 @@ color_white=\\[\\e[37m\\]
 
 
 
+### Load the extras
+source ~/dotfiles/extras/marks.sh
+
+
 ### Check if current dir is a valid Git repo ###
 
 check_git_branch_for_prompt() {
