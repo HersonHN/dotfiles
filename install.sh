@@ -32,3 +32,4 @@ echo "source ~/dotfiles/bashrc.sh" >> ~/.bash_profile
 chmod 744 ~/dotfiles/bin/*
 
 echo "dotfiles installed"
+
