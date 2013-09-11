@@ -81,7 +81,7 @@ set undodir=~/.vim-backups
 set undolevels=1000
 
 
-" === Please ignore this files ==
+" === Please ignore these files ==
 set wildignore=.git,.hg,.svn,node_modules,*.exe,*.so,*.dll,*.jpg,*.jpeg,*.png,*.gif,*.woof,*.swf,*.mp3,*.mp4,*.vid,*.tiff,*.pdf
 
 
@@ -90,7 +90,6 @@ set nolist listchars=trail:·,tab:➟\
 
 
 " === GUI ===
-
 set mouse=a
 
 function! ColorsTomorrow()
