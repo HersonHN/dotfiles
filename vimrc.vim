@@ -149,9 +149,15 @@ noremap <leader>s :w <CR>
 noremap <leader>S :w <CR>
 noremap <C-S> :w <CR>
 
-" navigation throughout tabs
+" navigation through tabs
 noremap <leader><left> :tabp <CR>
 noremap <leader><right> :tabn <CR>
+
+" navigation through windows
+noremap <leader>h <C-w>h
+noremap <leader>j <C-w>j
+noremap <leader>k <C-w>k
+noremap <leader>l <C-w>l
 
 " close buffer with <leader> Q
 noremap <leader>q :call CloseBufferOrVim() <CR>

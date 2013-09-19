@@ -12,6 +12,10 @@ export CLICOLOR=1
 export LSCOLORS=Gxfxcxdxbxegedabagacad
 
 
+### le vi mode
+
+set -o vi
+
 
 ### Lazy's man shortcuts
 
