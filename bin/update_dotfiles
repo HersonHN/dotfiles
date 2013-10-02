@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
 cd ~/dotfiles
-git pull
+
+#force update
+git fetch origin master
+git reset --hard FETCH_HEAD
+git clean -df
 
 echo "dotfiles updated"
 
