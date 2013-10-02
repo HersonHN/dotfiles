@@ -1,3 +1,4 @@
+#!/bin/bash
 
 function append_text() {
     ## Only append the text once
@@ -16,6 +17,9 @@ append_text "source ~/dotfiles/bashrc.sh" "$HOME/.bashrc"
 append_text "source ~/dotfiles/bashrc.sh" "$HOME/.bash_profile"
 
 # copying all the generic files to home
-cp -R ~/dotfiles/generic/ ~/
 
+ls -1a "generic/" | rgrep -v '\.$' | while read filename
+do
+    cp -R "generic/$filename" ~
+done
 
