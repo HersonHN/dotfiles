@@ -9,3 +9,5 @@ git clean -df
 
 echo "dotfiles updated"
 
+source ~/dotfiles/update.sh
+
