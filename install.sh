@@ -2,14 +2,7 @@
 
 if [ ! -d ~/dotfiles ]
 then
-    echo "Dotfiles instalation must be on the user's home folder"
-    exit 1
-fi
-
-# Install it only once.
-if grep -Fxq "source ~/dotfiles/vimrc.vim" ~/.vimrc
-then
-    echo "Already Installed!"
+    echo "Dotfiles instalation must be on $HOME"
     exit 1
 fi
 
@@ -23,13 +16,8 @@ fi
 # link the .vim folder
 ln -s ~/dotfiles/VIM ~/.vim
 
-# adding the source to the .vimrc and the .bashrc
-echo "source ~/dotfiles/vimrc.vim" >> ~/.vimrc
-echo "source ~/dotfiles/bashrc.sh" >> ~/.bashrc
-echo "source ~/dotfiles/bashrc.sh" >> ~/.bash_profile
-
-# giving the rights to the custom scripts
-chmod 744 ~/dotfiles/bin/*
+# running the installation via update.sh
+source "~/dotfiles/update.sh"
 
 echo "dotfiles installed"
 

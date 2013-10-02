@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+cd ~/dotfiles
+git pull
+
+echo "dotfiles updated"
+
