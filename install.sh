@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 if [ ! -d ~/dotfiles ]
 then
@@ -17,7 +17,7 @@ fi
 ln -s ~/dotfiles/VIM ~/.vim
 
 # running the installation via update.sh
-bash "~/dotfiles/update.sh"
+/bin/bash update.sh
 
 echo "dotfiles installed"
 
