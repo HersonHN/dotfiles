@@ -18,7 +18,7 @@ append_text "source ~/dotfiles/bashrc.sh" "$HOME/.bash_profile"
 
 # copying all the generic files to home
 
-ls -1a "generic/" | rgrep -v '\.$' | while read filename
+ls -1a "generic/" | egrep -v '\.$' | while read filename
 do
     cp -R "generic/$filename" ~
 done
