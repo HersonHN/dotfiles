@@ -2,4 +2,4 @@
 *.log
 *.cache
 .netrwhist
-extras/.marks/*
+extras/.marks/*/
