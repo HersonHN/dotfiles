@@ -15,6 +15,11 @@ function unmark {
 }
 function marks {
 
+    if [[ ! -d "$MARKPATH" ]]; then
+        echo "There are no marks yet"
+        return
+    fi
+
     if [[ `uname` == 'Darwin' ]]; then
         ls -l "$MARKPATH" | tail -n +2 | sed 's/  / /g' | cut -d' ' -f9- | awk -F ' -> ' '{printf "%-10s -> %s\n", $1, $2}'
     else
