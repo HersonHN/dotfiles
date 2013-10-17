@@ -140,6 +140,8 @@ function! CloseBufferOrVim()
     endif
 endfunction
 
+" disabling
+nnoremap <leader>q NOP
 
 " slipt line
 nnoremap K i<CR><Esc>
@@ -169,7 +171,7 @@ noremap <leader><space> :nohlsearch <CR>
 noremap <leader><F5> :source $MYVIMRC <CR>
 
 " Hilight tabs and trailing spaces
-noremap <leader>l :set list! <CR>
+noremap <leader>L :set list! <CR>
 
 " Simple Search
 noremap <leader>f :execute '/\V' . escape(input('/'), '\\/')<CR>
