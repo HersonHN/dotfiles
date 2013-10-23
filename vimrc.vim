@@ -81,7 +81,7 @@ set undodir=~/.vim-backups
 set undolevels=1000
 
 
-" === Please ignore these files ==
+" === Tell vim to ignore these files ==
 set wildignore=.git,.hg,.svn,node_modules,*.exe,*.so,*.dll,*.jpg,*.jpeg,*.png,*.gif,*.woof,*.swf,*.mp3,*.mp4,*.vid,*.tiff,*.pdf
 
 
@@ -93,6 +93,7 @@ set nolist listchars=trail:·,tab:➟\
 set mouse=a
 
 function! ColorsTomorrow()
+    set background=dark
     colorscheme TomorrowNightBright
     " Fixing the html tag color
     hi htmlEndTag guifg=#4472b5
@@ -107,7 +108,6 @@ function! ColorsSolarized()
     let g:solarized_visibility = "normal"
     let g:solarized_italic = 1
     let g:solarized_termcolors = "256"
-    set background=dark
     colorscheme Solarized
 
     if has("gui_macvim")
@@ -140,8 +140,15 @@ function! CloseBufferOrVim()
     endif
 endfunction
 
-" disabling
-nnoremap <leader>q NOP
+
+" when wrapped
+nnoremap j gj
+nnoremap k gk
+nnoremap <down> gj 
+nnoremap <up> gk
+
+" disabling q
+nnoremap q NOP
 
 " slipt line
 nnoremap K i<CR><Esc>
