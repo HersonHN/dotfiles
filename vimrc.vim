@@ -142,10 +142,10 @@ endfunction
 
 
 " when wrapped
-nnoremap j gj
-nnoremap k gk
-nnoremap <down> gj 
-nnoremap <up> gk
+noremap <down> g<down>
+noremap <up> g<up>
+noremap j gj
+noremap k gk
 
 " disabling q
 nnoremap q NOP
