@@ -141,6 +141,9 @@ function! CloseBufferOrVim()
 endfunction
 
 
+" Paste and DO NOT override buffer
+xnoremap <expr> p 'pgv"'.v:register.'y'
+
 " when wrapped
 noremap <down> g<down>
 noremap <up> g<up>

@@ -13,8 +13,7 @@ export LSCOLORS=Gxfxcxdxbxegedabagacad
 
 
 ### le vi mode
-
-set -o vi
+# set -o vi
 
 
 ### Lazy's man shortcuts
