@@ -21,14 +21,6 @@ export LSCOLORS=Gxfxcxdxbxegedabagacad
 alias v="vim"
 alias g="git"
 
-# laziness level 2
-alias .="open ."
-alias ,="cd -" # I can't use `-` :(
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-
 
 ### customs ###
 
