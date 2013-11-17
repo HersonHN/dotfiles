@@ -39,7 +39,7 @@ fi
 
 ### aliases to external files ###
 
-export PATH="$PATH:~/dotfiles/bin/"
+export PATH="$PATH:~/dotfiles/bin"
 
 
 ### common misstypings ###
