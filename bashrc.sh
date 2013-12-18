@@ -112,6 +112,11 @@ c () {
     rm $1
 }
 
+# log 
+log () {
+    echo "$(date +'%Y-%m-%d %T') | $*" >> ~/log.txt
+}
+
 
 ### Prompt ###
 color_clear=\\[\\e[0m\\]
