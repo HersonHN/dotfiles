@@ -31,6 +31,15 @@ alias py="python"
 alias js="node"
 alias gitl="git log --pretty=oneline --abbrev-commit"
 
+
+### wow. much doge
+### src: https://twitter.com/smundro/status/421210987929157632
+
+alias such=git
+alias very=git
+alias wow="git status"
+
+
 # OSX aliases
 if [[ `uname` == 'Darwin' ]]; then
     alias subl="/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl"
