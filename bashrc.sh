@@ -24,6 +24,7 @@ alias g="git"
 
 ### customs ###
 
+alias vi="vim"
 alias cls="clear"
 alias rr="rm -rf"
 alias rb="ruby"
