@@ -2,7 +2,7 @@
 # From the "Quickly navigate your filesystem from the command-line" post by Jeroen Janssens
 # http://jeroenjanssens.com/2013/08/16/quickly-navigate-your-filesystem-from-the-command-line.html
 
-export MARKPATH=$HOME/dotfiles/extras/.marks
+export MARKPATH=$HOME/.marks
 
 function jump { 
     cd -P "$MARKPATH/$1" 2>/dev/null || echo "No such mark: $1"
