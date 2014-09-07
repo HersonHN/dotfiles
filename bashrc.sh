@@ -127,6 +127,14 @@ log () {
     echo "$(date +'%Y-%m-%d %T') | $*" >> ~/log.txt
 }
 
+joinPDFto() {
+    if [[ "$1" =~ "." ]]
+    then
+        "/System/Library/Automator/Combine PDF Pages.action/Contents/Resources/join.py" -o $1 *.pdf
+    else
+        echo "Please set extension"
+    fi
+}
 
 ### Prompt ###
 color_clear=\\[\\e[0m\\]
