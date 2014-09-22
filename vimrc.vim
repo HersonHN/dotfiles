@@ -81,11 +81,6 @@ set undodir=~/.vim-backups
 set undolevels=1000
 
 
-" === Command Alias ===
-
-command Here cd %:p:h
-
-
 " === Tell vim to ignore these files ==
 set wildignore=.git,.hg,.svn,node_modules,*.exe,*.so,*.dll,*.jpg,*.jpeg,*.png,*.gif,*.woof,*.swf,*.mp3,*.mp4,*.vid,*.tiff,*.pdf
 
