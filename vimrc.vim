@@ -124,6 +124,8 @@ if has("gui_macvim")
     set guifont=Consolas:h17
     set linespace=4
     call ColorsTomorrow()
+else
+    colorscheme grb256
 endif
 
 
