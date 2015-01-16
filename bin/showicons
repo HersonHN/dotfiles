@@ -2,7 +2,7 @@
     
 if [ "$1" == "off" ];
 then
-    echo "Hidding desktop icons..."
+    echo "Hiding desktop icons..."
     defaults write com.apple.finder CreateDesktop false
 else
     echo "Showing desktop icons..."
