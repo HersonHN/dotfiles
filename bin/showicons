@@ -1,0 +1,15 @@
+#! /usr/bin/env bash
+    
+if [ "$1" == "off" ];
+then
+    echo "Hidding desktop icons..."
+    defaults write com.apple.finder CreateDesktop false
+else
+    echo "Showing desktop icons..."
+    defaults write com.apple.finder CreateDesktop true
+fi
+
+killAll Finder
+echo "Done."
+
+
