@@ -68,7 +68,7 @@ gitb () {
   echo $git_branch
 }
 
-check_git_branch_for_prompt() {
+check_git_prompt() {
   local BRANCH="";
 
   if [ -d .git ]; then
@@ -84,7 +84,7 @@ check_git_branch_for_prompt() {
   PS1="$color_bold""$color_red""\u""$BRANCH: ""\w"" > ""$color_clear"
 }
 
-export PROMPT_COMMAND="check_git_branch_for_prompt"
+PROMPT_COMMAND="check_git_prompt"
 
 
 
