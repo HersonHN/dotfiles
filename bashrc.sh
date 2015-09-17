@@ -12,56 +12,25 @@ export CLICOLOR=1
 export LSCOLORS=Gxfxcxdxbxegedabagacad
 
 
-### le vi mode
-# set -o vi
-
-
-### Lazy's man shortcuts
-
+### shortcuts
+alias cd..="cd .."
 alias v="vim"
 alias g="git"
-
-
-### customs ###
-
 alias vi="vim"
 alias cls="clear"
 alias rr="rm -rf"
 alias rb="ruby"
 alias py="python"
 alias js="node"
-alias gitl="git log --pretty=oneline --abbrev-commit"
 
+### quit command
+alias q="exit"
+alias :q="exit"
+alias :wq="exit"
+alias ,q="exit"
+alias ZZ="exit"
 
-### wow. much doge
-### src: https://twitter.com/smundro/status/421210987929157632
-
-alias such=git
-alias very=git
-alias wow="git status"
-
-
-# OSX aliases
-if [[ `uname` == 'Darwin' ]]; then
-    alias subl="/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl"
-fi
-
-
-### aliases to external files ###
-
-export PATH="$PATH:~/dotfiles/bin"
-
-
-### common misstypings ###
-
-alias cd..="cd .."
-alias vat="cat"
-alias bim="vim"
-
-
-
-### override ls ###
-
+### override ls
 if [[ `uname` == 'Darwin' ]]; then
   alias ls="ls -G"
 else
@@ -69,74 +38,12 @@ else
 fi
 
 
-
-### quit command ###
-
-alias q="exit"
-alias :q="exit"
-alias :wq="exit"
-alias ,q="exit"
-alias ZZ="exit"
+### aliases to external files
+export PATH="$PATH:~/dotfiles/bin"
 
 
 
-### functions ###
-
-# Make a new directory and open it
-md () {
-    mkdir "$1"
-    cd "$1"
-}
-
-# Git push and add message
-gitp () {
-  git add -A && git commit -m "$1" && git push origin master
-}
-
-# Git branch
-gitb () {
-  git_branch=$(git branch | grep '*' | tr '* ' '\0')
-  echo $git_branch
-}
-
-# This is like ls -al, but with the octal description of the file's permission
-la () {
-  ls -la "$@" | awk '{k=0;for(i=0;i<=8;i++)k+=((substr($1,i+2,1)~/[rwx]/)*2^(8-i));printf("%0o ",k);print}'
-}
-
-# Restart Apache
-apacherestart () {
-  sudo /usr/sbin/apachectl restart
-}
-
-# compile cpp stuff
-c () {
-    if [[ "$1" =~ "." ]]
-    then
-        echo "Wrong filename"
-        return;
-    fi
-
-    make $1
-    ./$1
-    rm $1
-}
-
-# log 
-log () {
-    echo "$(date +'%Y-%m-%d %T') | $*" >> ~/log.txt
-}
-
-joinPDFto() {
-    if [[ "$1" =~ "." ]]
-    then
-        "/System/Library/Automator/Combine PDF Pages.action/Contents/Resources/join.py" -o $1 *.pdf
-    else
-        echo "Please set extension"
-    fi
-}
-
-### Prompt ###
+### Prompt
 color_clear=\\[\\e[0m\\]
 color_bold=\\[\\e[1m\\]
 
@@ -151,12 +58,15 @@ color_cyan=\\[\\e[36m\\]
 color_white=\\[\\e[37m\\]
 
 
-
 ### Load the extras
 source ~/dotfiles/extras/marks.sh
 
 
 ### Check if current dir is a valid Git repo ###
+gitb () {
+  git_branch=$(git branch | grep '*' | tr '* ' '\0')
+  echo $git_branch
+}
 
 check_git_branch_for_prompt() {
   local BRANCH="";
@@ -174,7 +84,7 @@ check_git_branch_for_prompt() {
   PS1="$color_bold""$color_red""\u""$BRANCH: ""\w"" > ""$color_clear"
 }
 
-export PROMPT_COMMAND=check_git_branch_for_prompt
+export PROMPT_COMMAND="check_git_branch_for_prompt"
 
 
 

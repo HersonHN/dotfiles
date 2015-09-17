@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# Make a new directory and open it
+mkdir "$1"
+cd "$1"
+
+

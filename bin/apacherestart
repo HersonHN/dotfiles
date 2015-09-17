@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# Restart Apache
+sudo /usr/sbin/apachectl restart
+
