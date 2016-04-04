@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+find . | grep .svn | sort -r | goku "rm -R #{line}" | sh
