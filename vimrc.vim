@@ -82,7 +82,7 @@ set undolevels=1000
 
 
 " === Tell vim to ignore these files ==
-set wildignore=.git,.hg,.svn,node_modules,*.exe,*.so,*.dll,*.jpg,*.jpeg,*.png,*.gif,*.woof,*.swf,*.mp3,*.mp4,*.vid,*.tiff,*.pdf
+set wildignore=.git,.hg,.svn,bower_components,node_modules,*.exe,*.so,*.dll,*.jpg,*.jpeg,*.png,*.gif,*.woof,*.swf,*.mp3,*.mp4,*.vid,*.tiff,*.pdf
 
 
 " === Trailing characters (off by default) ===
