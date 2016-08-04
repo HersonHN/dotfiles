@@ -256,13 +256,3 @@ let g:ctrlp_map = '<leader>p'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
  
-
-" CSS-Colors
-au! FileType scss syntax cluster sassCssAttributes add=@cssColors
-
-" vim-powerline
-" let g:Powerline_colorscheme="solarized"
-
-
-
-

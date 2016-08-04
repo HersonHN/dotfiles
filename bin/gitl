@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
 # show the git log
-git log --pretty=oneline --abbrev-commit
+git log --pretty=oneline --abbrev-commit --reverse
 
