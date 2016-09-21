@@ -244,8 +244,6 @@ endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
 
-
-
 " === Plugins ===
 
 " Pathogen
@@ -256,3 +254,4 @@ let g:ctrlp_map = '<leader>p'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
  
+
