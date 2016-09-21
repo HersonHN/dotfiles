@@ -44,4 +44,3 @@ source ~/dotfiles/extras/marks.sh
 source ~/dotfiles/extras/prompt.sh
 
 
-
