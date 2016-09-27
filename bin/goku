@@ -22,16 +22,16 @@ OptionParser.new do |opts|
     end
 end.parse!
 
-# Using a heredoc becouse parse quotes it's harder
+# Using a heredoc here because parsing quotes its harder
 command = ARGV[0]
 command = "<<-HEREDOC\n" + command + "\nHEREDOC"
 
-# Second parameter is the filename
+# The second parameter is the filename
 filename = ARGV[1]
 is_piped = !$stdin.tty?
 number = 0
 
-# Just use the line text and number in the eval
+# Bind the linetext and linenumber to use them in the eval
 def binds line, number
     return binding
 end
