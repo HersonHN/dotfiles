@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # Git push and add message
-git add -A && git commit -m "$1" && git push origin master
+local branch=$(git branch | grep '*' | tr '* ' '\0')
+git add -A && git commit -m "$1" && git push origin $branch
 
 
