@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# transform a video to a WhatsApp compatible format
+ffmpeg -i "$1" -vcodec libx264 -acodec aac "$2"
+
