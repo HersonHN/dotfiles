@@ -22,3 +22,6 @@
 [submodule "VIM/bundle/ctrlp.vim"]
 	path = VIM/bundle/ctrlp.vim
 	url = https://github.com/ctrlpvim/ctrlp.vim
+[submodule "VIM/bundle/vim-es6"]
+	path = VIM/bundle/vim-es6
+	url = https://github.com/isRuslan/vim-es6
