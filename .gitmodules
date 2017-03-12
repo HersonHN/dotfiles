@@ -19,3 +19,6 @@
 [submodule "VIM/bundle/vim-mustache-handlebars"]
 	path = VIM/bundle/vim-mustache-handlebars
 	url = git://github.com/mustache/vim-mustache-handlebars.git
+[submodule "VIM/bundle/ctrlp.vim"]
+	path = VIM/bundle/ctrlp.vim
+	url = https://github.com/ctrlpvim/ctrlp.vim
