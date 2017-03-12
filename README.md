@@ -1,7 +1,13 @@
 dotfiles
 ========
 
-My dotfiles.  
-Just the basic, vim and bash.
+HersonHN's dotfiles.
 
+### Installation
 
+```
+cd ~
+git clone git@github.com:HersonHN/dotfiles.git --recursive
+cd dotfiles
+sh install.sh
+```
