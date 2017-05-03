@@ -27,6 +27,10 @@ alias :wq="exit"
 alias ,q="exit"
 alias ZZ="exit"
 
+activ () {
+    source env/bin/activate
+}
+
 ### override ls
 if [[ `uname` == 'Darwin' ]]; then
   alias ls="ls -G"
