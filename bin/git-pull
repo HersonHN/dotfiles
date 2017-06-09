@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# git pull
+
+git_branch=$(git branch | grep '*' | tr '* ' '\0')
+git pull origin $git_branch
+
+
