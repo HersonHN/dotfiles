@@ -3,6 +3,6 @@
 # Git push and add message
 
 git_branch=$(git branch | grep '*' | tr '* ' '\0')
-git add -A && git commit -m "$1" && git push origin $git_branch
+git add -A && git commit -m "$*" && git push origin $git_branch
 
 
