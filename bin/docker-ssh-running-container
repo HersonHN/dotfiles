@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-docker exec -it $(docker ps | grep fte | awk '{print $1}') bash
+docker exec -it $(docker ps | head -2 | tail -1 | awk '{print $1}') bash
 

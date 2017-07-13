@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-docker stop $(docker ps | grep fte | awk '{print $1}')
+docker stop $(docker ps | head -2 | tail -1 | awk '{print $1}')
 

@@ -2,7 +2,11 @@
 
 # Git push and add message
 
-git_branch=$(git branch | grep '*' | tr '* ' '\0')
-git add -A && git commit -m "$*" && git push origin $git_branch
-
+if [[ $(git diff | grep "^\+" | grep "console.log") ]]; then
+    echo "The commit has lines with console.log"
+    echo "use git diff to check"
+else
+    git_branch=$(git branch | grep '*' | tr '* ' '\0')
+    git add -A && git commit -m "$*" && git push origin $git_branch
+fi
 
