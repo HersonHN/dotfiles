@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
+echo "git request-pull" "$(git-branch)" "$(git-url)" $1
 git request-pull "$(git-branch)" "$(git-url)" $1
 
