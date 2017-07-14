@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
-# git pull
+# Git push and:wq
+#
 
-git_branch=$(git branch | grep '*' | tr '* ' '\0')
+git_branch=$(git-branch)
 git pull origin $git_branch
 
 
