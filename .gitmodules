@@ -1,24 +1,24 @@
 [submodule "VIM/bundle/rust.vim"]
 	path = VIM/bundle/rust.vim
-	url = git@github.com:wting/rust.vim.git
+	url = https://github.com:wting/rust.vim
 [submodule "VIM/bundle/powerline"]
 	path = VIM/bundle/powerline
-	url = git@github.com:Lokaltog/powerline.git
+	url = https://github.com/Lokaltog/powerline
 [submodule "VIM/bundle/zencoding-vim"]
 	path = VIM/bundle/zencoding-vim
-	url = git@github.com:mattn/zencoding-vim.git
+	url = https://github.com/mattn/zencoding-vim
 [submodule "VIM/bundle/cf-utils.vim"]
 	path = VIM/bundle/cf-utils.vim
-	url = git@github.com:davejlong/cf-utils.vim.git
+	url = https://github.com/davejlong/cf-utils.vim
 [submodule "VIM/bundle/emmet-vim"]
 	path = VIM/bundle/emmet-vim
-	url = git@github.com:mattn/emmet-vim.git
+	url = https://github.com/mattn/emmet-vim
 [submodule "VIM/bundle/vim-airline"]
 	path = VIM/bundle/vim-airline
-	url = git@github.com:bling/vim-airline.git
+	url = https://github.com/bling/vim-airline
 [submodule "VIM/bundle/vim-mustache-handlebars"]
 	path = VIM/bundle/vim-mustache-handlebars
-	url = git://github.com/mustache/vim-mustache-handlebars.git
+	url = https://github.com/mustache/vim-mustache-handlebars
 [submodule "VIM/bundle/ctrlp.vim"]
 	path = VIM/bundle/ctrlp.vim
 	url = https://github.com/ctrlpvim/ctrlp.vim
