@@ -27,8 +27,17 @@ alias :wq="exit"
 alias ,q="exit"
 alias ZZ="exit"
 
-activ () {
-    source env/bin/activate
+### helpers
+
+# activate virtualenv
+activate () {
+  source env/bin/activate
+}
+
+# create a folder and enter it
+md () {
+  mkdir "$1"
+  cd "$1"
 }
 
 ### override ls
@@ -40,7 +49,7 @@ fi
 
 
 ### aliases to external files
-export PATH="$PATH:~/dotfiles/bin"
+export PATH="$PATH:~/dotfiles/bin:~/bin"
 
 
 ### Load the extras
