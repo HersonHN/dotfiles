@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-# Git push and:wq
-#
+# Git pull
 
 git_branch=$(git-branch)
+git branch --set-upstream-to=origin/$git_branch master
 git pull origin $git_branch
 
 
