@@ -8,7 +8,7 @@ console.log(camelCase);
 function convert(input) {
     return input
         .replace(/[\-_]\w/g, function (matches) { return matches[1].toUpperCase(); })
-        .replace(/\w/, function(ch) { return ch.toUpperCase() });
+        .replace(/\b\w/g, function(ch) { return ch.toUpperCase() });
 }
 
 
