@@ -1,0 +1,14 @@
+#!/usr/bin/env node
+
+var inputs = process.argv.slice(2);
+var classCase = inputs.map(convert).join(' ');
+
+console.log(classCase);
+
+function convert(input) {
+    return input
+        .replace(/[\-_]\w/g, function (matches) { return matches[1].toUpperCase(); })
+        .replace(/\b\w/g, function(ch) { return ch.toUpperCase() });
+}
+
+
