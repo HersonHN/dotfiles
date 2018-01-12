@@ -49,7 +49,7 @@ fi
 
 
 ### aliases to external files
-export PATH="$PATH:~/dotfiles/bin:~/bin"
+export PATH="$PATH:$HOME/dotfiles/bin:$HOME/bin"
 
 
 ### Load the extras
