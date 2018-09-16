@@ -20,7 +20,7 @@ END
     end
 end.parse!
 
-# Using a heredoc here because parsing quotes its harder
+# Using a heredoc here because parsing quotes is harder
 command = ARGV[0]
 command = "<<-HEREDOC\n" + command + "\nHEREDOC"
 
