@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+ls -1 | while read line; do
+    newName="$(stat -f %SB -t %Y%m%d%H%M "$line") $line";
+
+    echo '"'$line'" -> "'$newName'"';
+    mv "$line" "$newName";
+done
