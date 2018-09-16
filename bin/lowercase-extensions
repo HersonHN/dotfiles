@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+ls | grep "\." | goku 'mv "#{line}" "#{line.split(".")[-2]}.#{line.split(".")[-1].downcase}"' | sh
+
