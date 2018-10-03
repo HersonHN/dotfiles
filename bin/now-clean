@@ -1,0 +1,67 @@
+#!/usr/bin/env python
+
+import subprocess
+import re
+
+def get_apps():
+    ls = subprocess.Popen(['now', 'ls'], stdout=subprocess.PIPE)
+    (output, status) = ls.communicate()
+
+    output = output.split('\n')
+    output = filter(lambda line: line.find('.now.sh') > -1, output)
+    output = map(lambda line: re.split('\s+', line), output)
+    output = map(lambda line: { 'app': line[1], 'alias': line[2] }, output)
+
+    return output
+
+
+def get_instances(app_name):
+    if app_name == '':
+        raise ValueError('App Name is empty')
+
+    ls = subprocess.Popen(['now', 'ls', app_name], stdout=subprocess.PIPE)
+    (output, status) = ls.communicate()
+    output = output.split('\n')
+    output = filter(lambda line: line.find('.now.sh') > -1, output)
+    output = map(lambda line: re.split('\s+', line), output)
+    output = map(lambda line: line[2], output)
+
+    return output
+
+
+def delete_instances(instances_to_delete):
+    for instance in instances_to_delete:
+        delete_instance(instance)
+
+
+def delete_instance(instance):
+    if instance == '':
+        raise ValueError('Instance is empty')
+
+    print 'Deleting', instance
+
+    rm = subprocess.Popen(['now', 'rm', '-y', instance], stdout=subprocess.PIPE)
+    (output, status) = rm.communicate()
+    print output
+
+
+def main():
+    apps = get_apps()
+
+    for row in apps:
+        main_instance = row['alias']
+        app_name = row['app']
+
+        print 'App Name:', app_name
+        print 'Main Instance:', main_instance
+
+        instances = get_instances(app_name)
+        instances_to_delete = [a for a in instances if a != main_instance]
+
+        print 'Aliases To Delete:'
+        print '\n'.join(instances_to_delete)
+
+        delete_instances(instances_to_delete)
+
+
+main()
