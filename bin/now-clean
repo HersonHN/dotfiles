@@ -58,7 +58,7 @@ def main():
         instances = get_instances(app_name)
         instances_to_delete = [a for a in instances if a != main_instance]
 
-        print 'Aliases To Delete:'
+        print 'Instances To Delete:'
         print '\n'.join(instances_to_delete)
 
         delete_instances(instances_to_delete)
