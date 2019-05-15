@@ -7,7 +7,7 @@ HersonHN's dotfiles.
 
 ```
 cd ~
-git clone git@github.com:HersonHN/dotfiles.git --recursive
+git clone https://github.com/HersonHN/dotfiles.git --recursive
 cd dotfiles
 sh install.sh
 ```
