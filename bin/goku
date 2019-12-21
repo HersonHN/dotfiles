@@ -41,7 +41,7 @@ action_loop = Proc.new do |line|
 end
 
 if is_piped
-    $stdin.each_line options[:delimiter] { |line| action_loop.call(line) }
+    $stdin.each_line { |line| action_loop.call(line) }
 elsif filename
     content = File.read(filename).to_s
     content.split(options[:delimiter]).each { |line| action_loop.call(line) }
