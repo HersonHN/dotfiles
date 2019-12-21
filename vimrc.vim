@@ -125,7 +125,7 @@ if has("gui_macvim")
     set linespace=4
     call ColorsTomorrow()
 else
-    colorscheme grb256
+    colorscheme codeschool
 endif
 
 
