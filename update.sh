@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 function append_text() {
     ## Only append the text once
@@ -13,11 +13,11 @@ chmod 744 ~/dotfiles/bin/*
 
 # adding the source to the .vimrc and the .bashrc
 append_text "source ~/dotfiles/vimrc.vim" "$HOME/.vimrc"
+append_text "source ~/dotfiles/zshrc.zsh" "$HOME/.zshrc"
 append_text "source ~/dotfiles/bashrc.sh" "$HOME/.bashrc"
 append_text "source ~/dotfiles/bashrc.sh" "$HOME/.bash_profile"
 
 # copying all the generic files to home
-
 ls -1a "generic/" | egrep -v '\.$' | while read filename
 do
     cp -R "generic/$filename" ~

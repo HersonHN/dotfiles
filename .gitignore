@@ -3,3 +3,4 @@
 *.cache
 .netrwhist
 extras/.marks/*/
+VIM/.vim

@@ -1,6 +1,5 @@
 
 ### Prompt Colors
-color_clear=\\[\\e[0m\\]
 color_bold=\\[\\e[1m\\]
 color_black=\\[\\e[30m\\]
 color_red=\\[\\e[31m\\]
@@ -10,6 +9,7 @@ color_blue=\\[\\e[34m\\]
 color_magenta=\\[\\e[35m\\]
 color_cyan=\\[\\e[36m\\]
 color_white=\\[\\e[37m\\]
+color_clear=\\[\\e[0m\\]
 
 
 ### Check if current dir is a valid Git repo
@@ -28,11 +28,11 @@ check_git_prompt() {
   fi
 
   if [ "$BRANCH" ]; then
-    BRANCH="$color_green""(""$git_branch"")""$color_red"
+    BRANCH="${color_green}(${git_branch})"
   fi
   
   # Set the prompt
-  PS1="$color_bold""$color_red""\u""$BRANCH: ""\w"" > ""$color_clear"
+  PS1="${color_bold}${color_red}\u${BRANCH}${color_red}: \w > ${color_clear}"
 }
 
 
