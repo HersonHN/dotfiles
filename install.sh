@@ -17,7 +17,7 @@ fi
 ln -s ~/dotfiles/VIM ~/.vim
 
 # running the installation via update.sh
-/bin/bash update.sh
+source update.sh
 
 echo "dotfiles installed"
 
