@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-docker exec -it $(docker ps | head -2 | tail -1 | awk '{print $1}') bash
-
