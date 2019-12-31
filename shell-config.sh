@@ -1,5 +1,5 @@
 
-### These are generic shell configurations and should work for sh, bash and zsh
+### These are generic shell configurations and should work for bash and zsh
 
 ### UTF-8 support
 export LC_ALL=en_US.UTF-8
