@@ -51,3 +51,4 @@ export PATH="$PATH:$HOME/dotfiles/bin:$HOME/bin"
 
 ### Load the extras
 source ~/dotfiles/extras/marks.sh
+source ~/dotfiles/extras/prompt.sh
