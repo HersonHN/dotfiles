@@ -1,86 +1,67 @@
 
-### check version, this could be:
-#   zsh for zsh
-#   bash4 for bash v4 and above
-#   bash3 for bash v3 and practically everything else
 if [ -n "$ZSH_VERSION" ]; then
   prompt_version="zsh"
-elif [ "${BASH_VERSINFO:-0}" -ge 4 ]; then
-  prompt_version="bash4"
 else
-  prompt_version="bash3"
+  prompt_version="bash"
 fi
 
+if [ ! -n "$PROMPT_COLOR" ]; then
+  PROMPT_COLOR="red";
+fi
+if [ ! -n "$PROMPT_COLOR_BRANCH" ]; then
+  PROMPT_COLOR_BRANCH="green";
+fi
+
+function get_color_code() {
+  if [ "$prompt_version" = "zsh" ]; then
+    case $1 in
+      clear_color) echo "%f"     ;;
+      clear_bold)  echo "%b"     ;;
+      bold_text)   echo "%B"     ;;
+      *)           echo "%F{$1}" ;;
+    esac
+  else
+    case $1 in
+      black)       echo "\\[\\e[30m\\]" ;;
+      red)         echo "\\[\\e[31m\\]" ;;
+      green)       echo "\\[\\e[32m\\]" ;;
+      yellow)      echo "\\[\\e[33m\\]" ;;
+      blue)        echo "\\[\\e[34m\\]" ;;
+      magenta)     echo "\\[\\e[35m\\]" ;;
+      cyan)        echo "\\[\\e[36m\\]" ;;
+      white)       echo "\\[\\e[37m\\]" ;;
+      clear_color) echo "\\[\\e[0m\\]"  ;;
+      bold_text)   echo "\\[\\e[1m\\]"  ;;
+      clear_bold)  echo ""              ;;
+    esac
+  fi
+}
+
 ### Check if current dir is a valid Git repo
-gitb () {
+function gitb () {
   git_branch=$(git branch | grep '*' | tr '* ' '\0')
   echo $git_branch
 }
 
-
-check_git_prompt() {
+function check_git_prompt() {
   local branch="";
 
   if [ "$prompt_version" = "zsh" ]; then
     local user="%n"
     local dir="%~"
-    local clear_color="%f"
-    local clear_bold="%b"
-    local bold_text="%B"
   else
     local user="\u"
     local dir="\w"
-    local clear_color="\\[\\e[0m\\]"
-    local clear_bold=""
-    local bold_text="\\[\\e[1m\\]"
   fi
 
-  if [ "$prompt_version" = "zsh" ]; then
-    ## typset for zsh
-    typeset -A color
-    color[black]="%F{black}"
-    color[red]="%F{red}"
-    color[green]="%F{green}"
-    color[yellow]="%F{yellow}"
-    color[blue]="%F{blue}"
-    color[magenta]="%F{magenta}"
-    color[cyan]="%F{cyan}"
-    color[white]="%F{white}"
-
-  elif [ "$prompt_version" = "bash4" ]; then
-    ## declare for bash
-    declare -A color
-    color[black]="\\[\\e[30m\\]"
-    color[red]="\\[\\e[31m\\]"
-    color[green]="\\[\\e[32m\\]"
-    color[yellow]="\\[\\e[33m\\]"
-    color[blue]="\\[\\e[34m\\]"
-    color[magenta]="\\[\\e[35m\\]"
-    color[cyan]="\\[\\e[36m\\]"
-    color[white]="\\[\\e[37m\\]"
-
-  else
-    ## bash 3 does not support hashmaps 
-    local color_red="\\[\\e[31m\\]"
-    local color_green="\\[\\e[32m\\]"
-  fi
-
+  local bold_text=$(get_color_code bold_text)
+  local clear_bold=$(get_color_code clear_bold)
+  local clear_color=$(get_color_code clear_color)
+  
   # Set the prompt colors
-  if [ "$prompt_version" = "bash3" ]; then
-    local prompt_color="${color_red}"
-    local branch_color="${color_green}"
-  else
-    
-    if [ ! -n "$PROMPT_COLOR" ]; then
-      local PROMPT_COLOR="red";
-    fi
+  local prompt_color=$(get_color_code $PROMPT_COLOR)
+  local branch_color=$(get_color_code $PROMPT_COLOR_BRANCH)
 
-    if [ ! -n "$PROMPT_COLOR_BRANCH" ]; then
-      local PROMPT_COLOR_BRANCH="red";
-    fi
-    local prompt_color="${color[$PROMPT_COLOR]}"
-    local branch_color="${color[$PROMPT_COLOR_BRANCH]}"
-  fi
 
   if [ -d .git ]; then
     gitb &> /dev/null
