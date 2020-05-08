@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
 # pretty print JSON
-python -m json.tool
+python -m json.tool $1
 
