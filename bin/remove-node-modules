@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+### This command removes all the node_modules folders
+### for repos inside the ~/Projects folder.
+### The last git commit must be older than two weeks
+### for the folder to be deleted.
+
+function checkfolder() {
+    local line=$1
+
+    echo "Checking: $line"
+    cd "$line"
+
+    local modified="$(git log -1 --format=%at)"
+    local now="$(date +%s)"
+
+    if [[ $(( ($now - $modified) / 60 / 60 / 24 )) -gt 14 ]]; then
+        echo "More than two weeks"
+        echo "Removing..."
+        rm -rf "$line"
+    else
+        echo "Less than two weeks"
+    fi
+
+    echo ""
+}
+
+IFS=$'\n'
+
+find ~/Projects -name "node_modules" \
+    | egrep -vi '\/node_modules\/(.*)\/node_modules' \
+    | while read line
+do
+    checkfolder $line
+done
+
