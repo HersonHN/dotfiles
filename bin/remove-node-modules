@@ -7,6 +7,11 @@
 
 function checkfolder() {
     local line=$1
+    local days=$2
+
+    if [[ -z "$days" ]]; then
+        local days="14" # two weeks by default
+    fi
 
     echo "Checking: $line"
     cd "$line"
@@ -14,12 +19,12 @@ function checkfolder() {
     local modified="$(git log -1 --format=%at)"
     local now="$(date +%s)"
 
-    if [[ $(( ($now - $modified) / 60 / 60 / 24 )) -gt 14 ]]; then
-        echo "More than two weeks"
+    if [[ $(( ($now - $modified) / 60 / 60 / 24 )) -gt $days ]]; then
+        echo "More than $days days"
         echo "Removing..."
         rm -rf "$line"
     else
-        echo "Less than two weeks"
+        echo "Less than $days days"
     fi
 
     echo ""
@@ -31,6 +36,6 @@ find ~/Projects -name "node_modules" \
     | egrep -vi '\/node_modules\/(.*)\/node_modules' \
     | while read line
 do
-    checkfolder $line
+    checkfolder $line $1
 done
 
