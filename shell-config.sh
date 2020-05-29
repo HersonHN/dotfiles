@@ -30,6 +30,9 @@ alias :wq="exit"
 alias ,q="exit"
 alias ZZ="exit"
 
+### XDG Configuration
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+
 ### override ls
 if [[ `uname` == 'Darwin' ]]; then
   alias ls="ls -G"
