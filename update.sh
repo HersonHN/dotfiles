@@ -17,9 +17,29 @@ append_text "source ~/dotfiles/zshrc.zsh" "$HOME/.zshrc"
 append_text "source ~/dotfiles/bashrc.sh" "$HOME/.bashrc"
 append_text "source ~/dotfiles/bashrc.sh" "$HOME/.bash_profile"
 
+
+function copy_and_backup() {
+    # Note: to copy all files with the posibility of doing a backup
+    # of the previous one, I'm using GNU's cp command which is not
+    # present on macOS, that is why I include a binary for the command
+    # in the bin/ folder.
+
+    if [[ `uname` == 'Darwin' ]]; then
+        ~/dotfiles/bin/gcp -R --backup=numbered "$1" "$2"
+    else
+        cp -R --backup=numbered "$1" "$2"
+    fi
+}
+
 # copying all the generic files to home
-ls -1a "generic/" | egrep -v '\.$' | while read filename
+ls -1pa "generic/" | egrep -v '/' | while read filename
 do
-    cp -R "generic/$filename" ~
+    copy_and_backup "generic/$filename" ~
+done
+
+# copy all the files under generic/config to ~/.config
+ls -1pa "generic/config" | egrep -v '\.\/$' | while read filename
+do
+    copy_and_backup "generic/config/$filename" ~/.config
 done
 
