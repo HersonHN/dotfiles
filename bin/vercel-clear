@@ -21,9 +21,21 @@ def main():
       delete_instances(instances_to_delete)
 
 
+def is_instance(line):
+  ## old domanin
+  if (line.find('.now.sh') > -1):
+    return True
+
+  ## new domain
+  if (line.find('.vercel.app') > -1):
+    return True
+
+  return False
+
+
 def get_apps():
   output = command(['vercel', 'ls']).split('\n')
-  output = filter(lambda line: line.find('.now.sh') > -1, output)
+  output = filter(lambda line: is_instance(line), output)
   output = map(lambda line: re.split('\s+', line), output)
   output = map(lambda line: { 'app': line[1], 'alias': line[2] }, output)
 
@@ -35,7 +47,7 @@ def get_instances(app_name):
     raise ValueError('App Name is empty')
 
   output = command(['vercel','ls', app_name]).split('\n')
-  output = filter(lambda line: line.find('.now.sh') > -1, output)
+  output = filter(lambda line: is_instance(line), output)
   output = map(lambda line: re.split('\s+', line), output)
   output = map(lambda line: line[2], output)
 
