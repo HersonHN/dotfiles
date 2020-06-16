@@ -52,6 +52,10 @@ md () {
 export PATH="$PATH:$HOME/dotfiles/bin:$HOME/bin"
 
 
+### ignore files configured at .gitignore for fd and fzf
+export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
 ### Load the extras
 source ~/dotfiles/extras/marks.sh
 source ~/dotfiles/extras/prompt.sh
