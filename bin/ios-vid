@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 
 # transform a video to an iOS compatible format
-ffmpeg -i "$1" -vcodec libx264 -acodec aac "$2"
-
+ffmpeg -y -i "$1" -vcodec libx264 -acodec aac "$2" < /dev/null
