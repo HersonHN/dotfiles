@@ -3,7 +3,7 @@
 # Git pull
 
 git_branch=$(git-branch)
-git branch --set-upstream-to=origin/$git_branch $git_branch
-git pull origin $git_branch
+git branch --set-upstream-to="origin/$git_branch" "$git_branch"
+git pull origin "$git_branch"
 
 

@@ -2,8 +2,6 @@
 
 # compile rust stuff
 filename=$(basename "$1" .rs)
-dir=$(pwd)
-
 
 if test -f "$filename"; then
     echo "Error: Compiled files already exists ($1), please delete it and run again"
@@ -12,7 +10,7 @@ fi
 
 echo "$1"
 
-rustc $1
+rustc "$1"
 eval "./$filename"
-rm $filename
+rm "$filename"
 

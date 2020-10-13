@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-cd ~/dotfiles
+# shellcheck disable=SC1090
+cd ~/dotfiles || exit
 
 #force update
 git fetch origin master

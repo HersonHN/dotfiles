@@ -6,20 +6,25 @@
 ### for the folder to be deleted.
 
 function checkfolder() {
-    local line=$1
-    local days=$2
+    local line
+    local days
+    local now
+    local modified
+
+    line=$1
+    days=$2
 
     if [[ -z "$days" ]]; then
-        local days="14" # two weeks by default
+        days="14" # two weeks by default
     fi
 
     echo "Checking: $line"
-    cd "$line"
+    cd "$line" || exit
 
-    local modified="$(git log -1 --format=%at)"
-    local now="$(date +%s)"
+    modified="$(git log -1 --format=%at)"
+    now="$(date +%s)"
 
-    if [[ $(( ($now - $modified) / 60 / 60 / 24 )) -gt $days ]]; then
+    if [[ $(( (now - modified) / 60 / 60 / 24 )) -gt $days ]]; then
         echo "More than $days days"
         echo "Removing..."
         rm -rf "$line"
@@ -33,9 +38,9 @@ function checkfolder() {
 IFS=$'\n'
 
 find ~/Projects -name "node_modules" \
-    | egrep -vi '\/node_modules\/(.*)\/node_modules' \
-    | while read line
+    | grep -Evi '\/node_modules\/(.*)\/node_modules' \
+    | while read -r line
 do
-    checkfolder $line $1
+    checkfolder "$line" "$1"
 done
 
