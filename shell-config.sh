@@ -59,3 +59,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 ### Load the extras
 source ~/dotfiles/extras/marks.sh
 source ~/dotfiles/extras/prompt.sh
+
+### GPG
+export GPG_TTY=$(tty)
+
