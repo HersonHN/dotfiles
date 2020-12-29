@@ -7,9 +7,9 @@ then
     echo "The commit has lines with console.log"
     echo "use git diff to check"
 else
-    git_branch=$(git-branch)
+    git_branch="$(git-branch)"
     git add -A
-    git commit -m "$*"
+    git commit -S -m "$*"
     git push origin "$git_branch"
 fi
 
