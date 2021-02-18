@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
 # remove all branches except master and the current one
-git branch | grep -v master | grep -v "\*" | xargs git branch -D
+git branch | grep -v master | grep -v main | grep -v "\*" | xargs git branch -D
 
