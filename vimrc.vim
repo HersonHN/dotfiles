@@ -103,30 +103,7 @@ function! ColorsTomorrow()
     hi htmlTagName guifg=#4472b5
 endfunction
 
-function! ColorsSolarized()
-    let g:solarized_contrast = "high"
-    let g:solarized_visibility = "normal"
-    let g:solarized_italic = 1
-    let g:solarized_termcolors = "256"
-    colorscheme Solarized
-
-    if has("gui_macvim")
-        " Fixing the html tag color
-        hi Normal guibg=#000000
-        hi htmlEndTag guifg=#268bd2 gui=bold
-        hi htmlScriptTag guifg=#268bd2 gui=bold
-        hi htmlTag guifg=#268bd2 gui=bold
-        hi htmlTagN guifg=#268bd2 gui=bold
-    endif
-endfunction
-
-if has("gui_macvim")
-    set guifont=Consolas:h17
-    set linespace=4
-    call ColorsTomorrow()
-else
-    colorscheme TomorrowNightBright
-endif
+call ColorsTomorrow()
 
 
 " === Keys ===
@@ -199,7 +176,8 @@ function! GlobalSeach()
         echo "" | return
     endif
     
-    let search_command = ':lvim /\V' . text . '/gj ./**/*.' . extension
+    set wildignore+=node_modules/**,.git/**
+    let search_command = ':lvimgrep /\V' . text . '/gj ./**/*.' . extension
     try
         execute search_command 
     catch
