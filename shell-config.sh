@@ -63,7 +63,4 @@ source ~/dotfiles/extras/prompt.sh
 ### GPG
 export GPG_TTY=$(tty)
 
-### enabling globs for multiple folders (**)
-shopt -s globstar
-
 
