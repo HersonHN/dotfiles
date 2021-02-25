@@ -176,7 +176,6 @@ function! GlobalSeach()
         echo "" | return
     endif
     
-    set wildignore+=node_modules/**,.git/**
     let search_command = ':lvimgrep /\V' . text . '/gj ./**/*.' . extension
     try
         execute search_command 
