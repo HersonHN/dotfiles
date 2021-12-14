@@ -69,7 +69,15 @@ function check_git_prompt() {
   branch_color=$(get_color_code $PROMPT_COLOR_BRANCH)
 
 
-  if [ -d .git ]; then
+  if [ -d                      ".git" ] ||
+     [ -d                   "../.git" ] ||
+     [ -d                "../../.git" ] ||
+     [ -d             "../../../.git" ] ||
+     [ -d          "../../../../.git" ] ||
+     [ -d       "../../../../../.git" ] ||
+     [ -d    "../../../../../../.git" ] ||
+     [ -d "../../../../../../../.git" ]
+  then
     gitb &> /dev/null
     branch="$git_branch"
   fi
