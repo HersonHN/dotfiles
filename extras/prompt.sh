@@ -1,3 +1,4 @@
+#!/bin/bash
 
 if [ -n "$ZSH_VERSION" ]; then
   prompt_version="zsh"
@@ -5,10 +6,10 @@ else
   prompt_version="bash"
 fi
 
-if [ ! -n "$PROMPT_COLOR" ]; then
+if [ -z "$PROMPT_COLOR" ]; then
   PROMPT_COLOR="red";
 fi
-if [ ! -n "$PROMPT_COLOR_BRANCH" ]; then
+if [ -z "$PROMPT_COLOR_BRANCH" ]; then
   PROMPT_COLOR_BRANCH="green";
 fi
 
@@ -39,12 +40,17 @@ function get_color_code() {
 
 ### Check if current dir is a valid Git repo
 function gitb () {
-  git_branch=$(git branch | grep '*' | tr '* ' '\0')
-  echo $git_branch
+  git_branch=$(git branch | grep "\*" | tr '* ' '\0')
+  echo "$git_branch"
 }
 
 function check_git_prompt() {
   local branch="";
+  local bold_text
+  local clear_bold
+  local clear_color
+  local prompt_color
+  local branch_color
 
   if [ "$prompt_version" = "zsh" ]; then
     local user="%n"
@@ -54,13 +60,13 @@ function check_git_prompt() {
     local dir="\w"
   fi
 
-  local bold_text=$(get_color_code bold_text)
-  local clear_bold=$(get_color_code clear_bold)
-  local clear_color=$(get_color_code clear_color)
+  bold_text=$(get_color_code bold_text)
+  clear_bold=$(get_color_code clear_bold)
+  clear_color=$(get_color_code clear_color)
   
   # Set the prompt colors
-  local prompt_color=$(get_color_code $PROMPT_COLOR)
-  local branch_color=$(get_color_code $PROMPT_COLOR_BRANCH)
+  prompt_color=$(get_color_code $PROMPT_COLOR)
+  branch_color=$(get_color_code $PROMPT_COLOR_BRANCH)
 
 
   if [ -d .git ]; then
