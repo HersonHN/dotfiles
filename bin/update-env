@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+echo "$PWD"
+
+if [[ ! -f "$PWD/.env.sample" ]]; then
+  echo ".env.sample files does not exist in current directory"
+  exit 1
+fi
+
+
+if [[ ! -f "$PWD/overrides/.env" ]]; then
+  echo "./overrides/.env file does not exists in current directory"
+  exit 1
+fi
+
+cat "$PWD/.env.sample" > "$PWD/.env"
+echo "
+
+
+" >> .env
+cat "$PWD/overrides/.env" >> "$PWD/.env"
+
+echo ".env file updated"
+
