@@ -16,9 +16,11 @@ fi
 cat "$PWD/.env.sample" > "$PWD/.env"
 echo "
 
-
 " >> .env
 cat "$PWD/overrides/.env" >> "$PWD/.env"
+
+echo "
+" >> .env
 
 echo ".env file updated"
 
