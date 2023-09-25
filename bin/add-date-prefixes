@@ -2,8 +2,8 @@
 
 # shellcheck disable=SC2012
 ls -1 | while read -r line; do
-    newName="$(stat -f %SB -t %Y%m%d%H%M "$line") $line";
+    newName="$(stat -f \"%SB\" -t %Y%m%d%H%M "$line") $line";
 
     echo '"'"$line"'" -> "'"$newName"'"';
-    mv "$line" "$newName";
+    #mv "$line" "$newName";
 done
