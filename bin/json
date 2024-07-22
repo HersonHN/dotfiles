@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
 # pretty print JSON
-python -m json.tool "$1"
+read pipe_input # read either from the pipe input
+arg_input="$1" # or the first argument of the script
+input="${pipe_input:-arg_input}"
+
+echo $input | python3 -m json.tool
 
