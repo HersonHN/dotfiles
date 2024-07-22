@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# clears twice because on mac doesn't always clears the whole terminal
+clear
+clear
+
