@@ -83,10 +83,10 @@ function check_git_prompt() {
   fi
 
   if [ "$branch" ]; then
-    branch="${branch_color}(${git_branch})${prompt_color}"
+    branch="${branch_color}${git_branch}:"
   fi
 
-  PS1="${bold_text}${prompt_color}${user}${branch}: ${dir} > ${clear_color}${clear_bold}"
+  PS1="${bold_text}${branch}${prompt_color}${dir} > ${clear_color}${clear_bold}"
 }
 
 
