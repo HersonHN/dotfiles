@@ -34,13 +34,13 @@ copy_and_backup() {
 }
 
 # copying all the generic files to home
-ls -1pa "generic/" | egrep -v '/' | while read filename
+ls -1pa "generic/" | grep -vE '/' | while read filename
 do
     copy_and_backup "generic/$filename" ~
 done
 
 # copy all the files under generic/config to ~/.config
-ls -1pa "generic/config" | egrep -v '\.\/$' | while read filename
+ls -1pa "generic/config" | grep -vE '\./$' | while read filename
 do
     copy_and_backup "generic/config/$filename" ~/.config
 done
