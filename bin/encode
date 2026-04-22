@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -e
+
+FULL_PATH="$1"
+DIRECTORY="$(dirname $FULL_PATH)"
+FILE="$(basename $FULL_PATH)"
+ENCODED_FILE="${FILE}.gpg"
+
+cd "$DIRECTORY"
+gpg --encrypt --recipient "$(gpg --list-keys --with-colons | awk -F: '/^pub:/ {print $5; exit}')" "$FILE"
+echo "\"$FILE\" encoded to \"$ENCODED_FILE\""

@@ -2,7 +2,7 @@
 
 # Git push and add message
 
-if git diff | grep "^\+" | grep -q "console.log"
+if git diff | grep "^+" | grep -q "console.log"
 then
     echo "The commit has lines with console.log"
     echo "use git diff to check"
