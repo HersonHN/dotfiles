@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -e
+
+FULL_PATH="$1"
+DIRECTORY="$(dirname "$FULL_PATH")"
+FILE="$(basename "$FULL_PATH")"
+CONVERTED_FILE="${FILE/.mp3/.m4a}"
+
+cd "$DIRECTORY"
+
+echo "converting \"$FILE\" to \"$CONVERTED_FILE\""
+
+ffmpeg -i "$FILE" -map 0 -map_metadata 0 -c:a aac -b:a 256k -c:v copy "$CONVERTED_FILE"

@@ -3,8 +3,8 @@
 set -e
 
 FULL_PATH="$1"
-DIRECTORY="$(dirname $FULL_PATH)"
-FILE="$(basename $FULL_PATH)"
+DIRECTORY="$(dirname "$FULL_PATH)""
+FILE="$(basename "$FULL_PATH)""
 ENCODED_FILE="${FILE}.gpg"
 
 cd "$DIRECTORY"
