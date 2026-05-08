@@ -10,9 +10,9 @@ function jump {
 }
 
 function mark {
-    local MARK="$1"
-    local DIR="$(pwd)"
-    echo $DIR > "$MARKPATH/$MARK.mark"
+    MARK="$1"
+    CURRENT_DIR="$(pwd)"
+    echo "$CURRENT_DIR" > "$MARKPATH/$MARK.mark"
 }
 
 function unmark { 
@@ -25,7 +25,7 @@ function marks {
         return
     fi
 
-    cd "$MARKPATH"
+    cd "$MARKPATH" || exit
 
     for file in *.mark; do
     if [ -f "$file" ]; then
