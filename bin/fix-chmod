@@ -11,7 +11,7 @@ main() {
 
     ls -R | grep ":$" | while read dir
     do
-        dir="${dir:2:${#dir} - 3}"
+        dir="${dir:2:${dir} - 3}"
         dir="$basedir/$dir/"
 
         if [ -d "$dir" ] && [ ! -L "$dir" ] 
